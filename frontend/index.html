@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mysuru city bus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Mysuru city bus</h1>
+    <p>Choose your stop and where you’re headed. See the next buses.</p>
+  </header>
+
+  <main>
+    <section class="panel" aria-labelledby="find-h">
+      <h2 id="find-h">Find a bus</h2>
+      <form id="search-form">
+        <label>From <input id="from" list="stop-list" placeholder="Type a stop, e.g. Palace" autocomplete="off" required></label>
+        <button type="button" id="swap" aria-label="Swap From and To">⇅ Swap</button>
+        <label>To <input id="to" list="stop-list" placeholder="Type a stop, e.g. Hebbal" autocomplete="off" required></label>
+        <datalist id="stop-list"></datalist>
+        <label>Leaving after <input type="time" id="after"></label>
+        <button type="submit">Find buses</button>
+      </form>
+      <div id="results" aria-live="polite"></div>
+    </section>
+
+    <section aria-labelledby="routes-h">
+      <h2 id="routes-h">All routes</h2>
+      <div id="routes"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="add-h">
+      <h2 id="add-h">Add a route</h2>
+      <form id="add-form">
+        <label>Route number <input id="r-number" placeholder="201" required></label>
+        <label>Route name <input id="r-name" placeholder="City Bus Stand to Chamundi Hill" required></label>
+        <label>Stops, one per line: name, minutes after the first stop
+          <textarea id="r-stops" rows="5" placeholder="City Bus Stand, 0&#10;Mysuru Palace, 10&#10;Chamundi Hill, 35" required></textarea>
+        </label>
+        <label>Departure times from the first stop, separated by commas
+          <input id="r-times" placeholder="07:00, 07:30, 08:00" required>
+        </label>
+        <label>Return departure times from the last stop (optional, leave empty for one-way)
+          <input id="r-return" placeholder="08:00, 08:30, 09:00">
+        </label>
+        <button type="submit">Save route</button>
+        <p id="add-msg" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

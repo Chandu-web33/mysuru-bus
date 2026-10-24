@@ -1,0 +1,4 @@
+node_modules
+frontend-react/dist
+database/bus.db
+.env

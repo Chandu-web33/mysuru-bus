@@ -1,0 +1,19 @@
+{
+  "name": "mysuru-bus",
+  "version": "1.0.0",
+  "description": "Mysuru city bus routes and timings",
+  "scripts": {
+    "start": "node backend/server.js",
+    "build": "npm install --prefix frontend-react --include=dev && npm run build --prefix frontend-react"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.0.0",
+    "express": "^4.19.2"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true
+  }
+}
