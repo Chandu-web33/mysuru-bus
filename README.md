@@ -26,4 +26,4 @@ Browser (React) -> `/api/...` (Express) -> SQL (SQLite) -> JSON back to the brow
 ## Note
 The routes and timings in `database/db.js` are sample data, not official timetables.
 
-Live demo: coming soon
+Live demo: https://mysuru-bus.onrender.com (free hosting, so the first load can take about a minute)
