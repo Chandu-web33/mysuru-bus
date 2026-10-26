@@ -30,7 +30,7 @@ export default function MapView({ stops, routes }) {
     <section aria-labelledby="map-h">
       <h2 id="map-h">Bus stops map</h2>
       <div className="map-box">
-        <MapContainer center={MYSURU_CENTER} zoom={12} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
+        <MapContainer center={MYSURU_CENTER} zoom={13} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
