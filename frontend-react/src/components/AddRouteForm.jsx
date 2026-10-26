@@ -4,6 +4,18 @@ import { api } from '../api';
 // "07:00, 07:30" -> ["07:00", "07:30"]
 const splitList = text => text.split(',').map(t => t.trim()).filter(Boolean);
 
+// One line of the stops box -> { name, minutes, latitude?, longitude? }
+// "Mysuru Palace, 10, 12.3052, 76.6551"  or just  "Mysuru Palace, 10"
+function parseStopLine(line) {
+  const parts = line.split(',').map(p => p.trim());
+  const stop = { name: parts[0], minutes: Number(parts[1]) };
+  if (parts[2] && parts[3]) {
+    stop.latitude = Number(parts[2]);
+    stop.longitude = Number(parts[3]);
+  }
+  return stop;
+}
+
 export default function AddRouteForm({ onSaved }) {
   const [number, setNumber] = useState('');
   const [name, setName] = useState('');
@@ -15,15 +27,11 @@ export default function AddRouteForm({ onSaved }) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      // each line "Stop name, minutes" -> { name, minutes }
       const stops = stopsText
         .split('\n')
         .map(l => l.trim())
         .filter(Boolean)
-        .map(line => {
-          const i = line.lastIndexOf(',');
-          return { name: line.slice(0, i).trim(), minutes: Number(line.slice(i + 1)) };
-        });
+        .map(parseStopLine);
 
       await api('/api/routes', {
         method: 'POST',
@@ -67,12 +75,12 @@ export default function AddRouteForm({ onSaved }) {
           />
         </label>
         <label>
-          Stops, one per line: name, minutes after the first stop
+          Stops, one per line: name, minutes after the first stop, latitude, longitude (position is optional)
           <textarea
             rows="5"
             value={stopsText}
             onChange={e => setStopsText(e.target.value)}
-            placeholder={'City Bus Stand, 0\nMysuru Palace, 10\nChamundi Hill, 35'}
+            placeholder={'City Bus Stand, 0\nMysuru Palace, 10, 12.3052, 76.6551\nChamundi Hill, 35, 12.2725, 76.6700'}
             required
           />
         </label>

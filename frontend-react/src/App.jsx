@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from './api';
 import SearchForm from './components/SearchForm';
+import MapView from './components/MapView';
 import RouteList from './components/RouteList';
 import AddRouteForm from './components/AddRouteForm';
 import './App.css';
@@ -36,6 +37,7 @@ export default function App() {
       <main>
         {loadError && <p className="error">{loadError}</p>}
         <SearchForm stops={stops} />
+        <MapView stops={stops} routes={routes} />
         <RouteList routes={routes} onChanged={refresh} />
         <AddRouteForm onSaved={refresh} />
       </main>

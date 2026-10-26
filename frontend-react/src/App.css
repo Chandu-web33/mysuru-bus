@@ -53,3 +53,8 @@ button:hover { filter: brightness(.95); }
 .error { color: var(--danger); }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* Map */
+.map-box { height: 420px; border: 2px solid var(--ink); border-radius: 8px; overflow: hidden; }
+.leaflet-container { font: inherit; }
+.stop-marker { background: none; border: 0; font-size: 28px; line-height: 32px; text-align: center; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .4)); }
